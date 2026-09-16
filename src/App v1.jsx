@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const tempMovieData = [
@@ -141,6 +141,15 @@ function MovieList({ movies }) {
   );
 }
 
+function Loader() {
+  return (
+    <div className="loader" role="status" aria-live="polite">
+      <span className="loader-spinner" aria-hidden="true" />
+      <span>Loading movies...</span>
+    </div>
+  );
+}
+
 function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
@@ -238,19 +247,38 @@ function Main({ movies }) {
    Navbar نفسه معندوش أي فكرة عنهم.
    ------------------------------------------------------------ */
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [query, setQuery] = useState("");
+  const KEY  = "83e644f5"
+  const [isLoading, setIsLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState("day");
+  const [error, setError] = useState("");
 
+useEffect(() => {
+  setIsLoading(true);
+    async  function fetchMovies() {
+       try {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
+         if ( !res.ok) throw new Error("Failed to fetch movies");
+        const data = await res.json();
+        setMovies(data.Search);
+        setIsLoading(false);
+       }catch (error) {
+       console.error(error.message);
+       
+       }
+    }
+    fetchMovies();
+}, []);
   return (
     <>
       <Navbar>
         <Logo />
         <Search query={query} setQuery={setQuery} movies={movies} />
-        <NumResults movies={movies} />
+    { isLoading ? <Loader/> : <NumResults movies={movies} />}
       </Navbar>
       <Main movies={movies} />
     </>
-  );
+  );  
 }
 
 /* ============================================================
