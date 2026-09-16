@@ -208,7 +208,7 @@ function WatchedMoviesList({ watched }) {
    ✅ COMPOSITION #3 (تطبيق عملي) — Main
    هنا بنركّب Box جوه بعضه مرتين بمحتوى مختلف كل مرة:
    المرة الأولى: MovieList
-   المرة التانية: WatchedSummary + WatchedMoviesList
+   المرة التانية: WatchedSummary + WatchedMoviesList,bmhghmgiklyuuiky
    ده الدليل العملي إن Box قابل لإعادة الاستخدام.
    ------------------------------------------------------------ */
 function Main({ movies }) {

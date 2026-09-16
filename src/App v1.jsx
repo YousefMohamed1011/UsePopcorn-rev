@@ -10,7 +10,7 @@ export default function App() {
   const KEY  = "83e644f5"
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("day");
+  const [query, setQuery] = useState("");
   const [error, setError] = useState("");
 
 useEffect(() => {
@@ -28,11 +28,11 @@ useEffect(() => {
        }
     }
     fetchMovies();
-}, []);
+}, [query]);
   return (
     <>
       <Navbar>
-        <Logo />
+        <Logo />xdvbdgbc cgdtgrhghtrtrtyt6y8ikj,yuiolyhtyujhjkbewhvb4r3h54v ftgretgr
         <Search query={query} setQuery={setQuery} movies={movies} />
         {error && <p className="error">{error}</p>}
         { isLoading ? <Loader/> : <NumResults movies={movies} />}
