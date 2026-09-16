@@ -263,8 +263,8 @@ useEffect(() => {
         setMovies(data.Search);
         setIsLoading(false);
        }catch (error) {
-       console.error(error.message);
-       
+       console.error(error.message);      
+       setError(error.message);
        }
     }
     fetchMovies();
@@ -274,7 +274,8 @@ useEffect(() => {
       <Navbar>
         <Logo />
         <Search query={query} setQuery={setQuery} movies={movies} />
-    { isLoading ? <Loader/> : <NumResults movies={movies} />}
+        {error && <p className="error">{error}</p>}
+        { isLoading ? <Loader/> : <NumResults movies={movies} />}
       </Navbar>
       <Main movies={movies} />
     </>
