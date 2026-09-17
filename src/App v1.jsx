@@ -20,19 +20,25 @@ useEffect(() => {
         const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
          if ( !res.ok) throw new Error("Failed to fetch movies");
         const data = await res.json();
-        setMovies(data.Search);
+        setMovies(data.Search ?? []);
         setIsLoading(false);
        }catch (error) {
        console.error(error.message);      
        setError(error.message);
        }
     }
+    if (query.length < 3) {
+      setMovies([]);
+      setError("");
+      setIsLoading(false);
+    }
+
     fetchMovies();
 }, [query]);
   return (
     <>
       <Navbar>
-        <Logo />xdvbdgbc cgdtgrhghtrtrtyt6y8ikj,yuiolyhtyujhjkbewhvb4r3h54v ftgretgr
+        <Logo />
         <Search query={query} setQuery={setQuery} movies={movies} />
         {error && <p className="error">{error}</p>}
         { isLoading ? <Loader/> : <NumResults movies={movies} />}
