@@ -6,15 +6,15 @@ function WatchedMovie({ movie }) {
       <div>
         <p>
           <span>⭐️</span>
-          <span>{movie.imdbRating}</span>
+          <span>{movie.imdbRating ?? "—"}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{movie.userRating}</span>
+          <span>{movie.userRating ?? "—"}</span>
         </p>
         <p>
           <span>⏳</span>
-          <span>{movie.runtime} min</span>
+          <span>{movie.runtime ? `${movie.runtime} min` : "—"}</span>
         </p>
       </div>
     </li>
@@ -23,7 +23,7 @@ function WatchedMovie({ movie }) {
 
 export default function WatchedMoviesList({ watched }) {
   return (
-    <ul className="list">
+    <ul className="list list-watched">
       {watched.map((movie) => (
         <WatchedMovie movie={movie} key={movie.imdbID} />
       ))}

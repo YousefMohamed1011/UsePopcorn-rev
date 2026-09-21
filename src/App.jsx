@@ -240,6 +240,7 @@ function Main({ movies }) {
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   const [query, setQuery] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   return (
     <>
@@ -248,7 +249,7 @@ export default function App() {
         <Search query={query} setQuery={setQuery} movies={movies} />
         <NumResults movies={movies} />
       </Navbar>
-      <Main movies={movies} />
+      <Main movies={movies} selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />
     </>
   );
 }

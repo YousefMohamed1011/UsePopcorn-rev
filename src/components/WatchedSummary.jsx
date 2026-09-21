@@ -1,9 +1,19 @@
 import { average } from "../utils/average";
 
 export default function WatchedSummary({ watched }) {
-  const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
-  const avgUserRating = average(watched.map((movie) => movie.userRating));
-  const avgRuntime = average(watched.map((movie) => movie.runtime));
+  const imdbRatings = watched
+    .map((movie) => Number(movie.imdbRating))
+    .filter(Number.isFinite);
+  const userRatings = watched
+    .map((movie) => Number(movie.userRating))
+    .filter(Number.isFinite);
+  const runtimes = watched
+    .map((movie) => Number(movie.runtime))
+    .filter(Number.isFinite);
+
+  const avgImdbRating = imdbRatings.length ? average(imdbRatings).toFixed(1) : "—";
+  const avgUserRating = userRatings.length ? average(userRatings).toFixed(1) : "—";
+  const avgRuntime = runtimes.length ? Math.round(average(runtimes)) : "—";
 
   return (
     <div className="summary">
@@ -23,7 +33,7 @@ export default function WatchedSummary({ watched }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime === "—" ? avgRuntime : `${avgRuntime} min`}</span>
         </p>
       </div>
     </div>

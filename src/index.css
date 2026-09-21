@@ -1020,6 +1020,37 @@ body {
   color: #b9c5d8;
 }
 
+.main > .box:first-child .list .btn-add-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 3.1rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid rgba(255, 188, 99, 0.4);
+  border-radius: 0.8rem;
+  color: #261305;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  box-shadow: 0 0.5rem 1.2rem rgba(255, 122, 24, 0.2);
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main > .box:first-child .list .btn-add-card:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0.8rem 1.6rem rgba(255, 122, 24, 0.32);
+  transform: translateY(-0.15rem);
+}
+
+.main > .box:first-child .list .btn-add-card:active {
+  transform: translateY(0);
+}
+
 .main > .box:last-child {
   grid-template-columns: 25rem 1fr;
 }
@@ -1050,5 +1081,270 @@ body {
 
   .main > .box:first-child .list img {
     height: 16rem;
+  }
+}
+
+/* Selected movie */
+.movie-detail {
+  position: relative;
+  min-height: 100%;
+  padding: 2.4rem;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 122, 24, 0.2), transparent 24rem),
+    linear-gradient(145deg, rgba(37, 52, 75, 0.96), rgba(15, 23, 38, 0.98));
+}
+
+.movie-detail__close {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  display: grid;
+  width: 3.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--color-text);
+  background: rgba(7, 11, 20, 0.7);
+  font-size: 2.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.movie-detail__close:hover {
+  background: var(--color-primary);
+  color: var(--color-background-900);
+  transform: scale(1.08);
+}
+
+.movie-detail img {
+  display: block;
+  width: min(100%, 27rem);
+  aspect-ratio: 2 / 3;
+  margin: 0 auto 2.4rem;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.4rem;
+  box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.38);
+}
+
+.movie-detail h2 {
+  margin-bottom: 1.2rem;
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.movie-detail p {
+  color: #c4cede;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.movie-detail__content {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.movie-detail__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.movie-detail__meta span {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 188, 99, 0.38);
+  border-radius: 10rem;
+  color: var(--color-primary-light);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.movie-detail__id {
+  margin-bottom: 2rem;
+  color: #91a1ba;
+  font-size: 1.3rem !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.movie-detail__rating {
+  margin-bottom: 1.8rem;
+  color: var(--color-primary-light) !important;
+  font-weight: 700;
+}
+
+.movie-detail__rating span {
+  color: #ffd166;
+  font-size: 2rem;
+  vertical-align: -0.1rem;
+}
+
+.movie-detail__plot {
+  margin-bottom: 2.4rem;
+}
+
+.movie-detail__user-rating {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 2.4rem;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  background: rgba(7, 11, 20, 0.28);
+  color: var(--color-primary-light);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.movie-detail__user-rating svg {
+  cursor: pointer;
+}
+
+.movie-detail .btn-add {
+  width: 100%;
+  margin-bottom: 2.4rem;
+  padding: 1.35rem 1.8rem;
+  border: 1px solid rgba(255, 225, 183, 0.4);
+  border-radius: 1.2rem;
+  box-shadow: 0 0.9rem 2rem rgba(255, 122, 24, 0.2);
+  font-size: 1.55rem;
+  letter-spacing: 0.02em;
+}
+
+.movie-detail .btn-add:hover {
+  box-shadow: 0 1.2rem 2.5rem rgba(255, 122, 24, 0.35);
+  transform: translateY(-0.2rem);
+}
+
+.movie-detail .btn-add:active {
+  transform: translateY(0);
+}
+
+.movie-detail__facts {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.movie-detail__facts div {
+  display: grid;
+  grid-template-columns: 8.4rem 1fr;
+  gap: 1.2rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 1.45rem;
+  line-height: 1.45;
+}
+
+.movie-detail__facts dt {
+  color: var(--color-primary-light);
+  font-weight: 700;
+}
+
+.movie-detail__facts dd {
+  color: #c4cede;
+}
+
+@media (max-width: 620px) {
+  .movie-detail {
+    padding: 1.6rem;
+  }
+
+  .movie-detail img {
+    width: min(100%, 22rem);
+    margin-bottom: 1.8rem;
+  }
+}
+
+/* Keep the watched summary visible while its movie list scrolls. */
+.main > .box:last-child {
+  min-height: 0;
+}
+
+.main > .box:last-child .list-watched {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  align-content: start;
+  scrollbar-gutter: stable;
+}
+
+/* Watched movies panel */
+.main > .box:last-child {
+  gap: 1.2rem;
+  padding: 1.2rem;
+}
+
+.main > .box:last-child .summary {
+  min-height: 7rem;
+  padding: 1.35rem 2rem;
+}
+
+.main > .box:last-child .list-watched {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-auto-rows: 9.2rem;
+  align-content: start;
+  gap: 1rem;
+  padding: 0.1rem 0.3rem 0.3rem;
+}
+
+.main > .box:last-child .list-watched li {
+  display: grid;
+  grid-template-columns: 5.2rem minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 1.2rem;
+  height: auto;
+  min-height: 9.2rem;
+  padding: 1.1rem 1.3rem;
+  overflow: hidden;
+}
+
+.main > .box:last-child .list-watched img {
+  grid-row: 1 / -1;
+  width: 5.2rem;
+  height: 6.9rem;
+  object-fit: cover;
+}
+
+.main > .box:last-child .list-watched h3 {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 1.55rem;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main > .box:last-child .list-watched li div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  min-width: 0;
+}
+
+.main > .box:last-child .list-watched li p {
+  gap: 0.4rem;
+  color: #b9c5d8;
+  font-size: 1.25rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .main > .box:last-child .summary {
+    min-height: auto;
+  }
+
+  .main > .box:last-child .list-watched {
+    grid-template-columns: 1fr;
   }
 }
