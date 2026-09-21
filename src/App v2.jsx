@@ -17,7 +17,7 @@ export default function App() {
 useEffect(() => {
   const abortController = new AbortController();
   let isCurrentRequest = true;
-
+      
   async function fetchMovies() {
     if (query.length < 3) {
       setMovies([]);

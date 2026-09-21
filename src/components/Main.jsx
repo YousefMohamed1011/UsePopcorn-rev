@@ -5,12 +5,36 @@ import WatchedMoviesList from "./WatchedMoviesList";
 import WatchedSummary from "./WatchedSummary";
 import MovieDetail from "./MovieDetail";
 
+const WATCHED_STORAGE_KEY = "watched";
+
+function getStoredWatchedMovies() {
+  try {
+    const storedWatchedMovies = localStorage.getItem(WATCHED_STORAGE_KEY);
+    const watchedMovies = storedWatchedMovies ? JSON.parse(storedWatchedMovies) : [];
+
+    return Array.isArray(watchedMovies) ? watchedMovies : [];
+  } catch {
+    return [];
+  }
+}
 
 export default function Main({ movies , selectedMovie, setSelectedMovie }) {
-  const [watched, setWatched] = useState([]);
-   function handleAddWatchedMovie(movie) {
-    setWatched((watched) => [...watched, movie]);
+  const [watched, setWatched] = useState(getStoredWatchedMovies);
+
+  function handleAddWatchedMovie(movie) {
+    setWatched((currentWatched) => {
+      const isAlreadyWatched = currentWatched.some(
+        (watchedMovie) => watchedMovie.imdbID === movie.imdbID
+      );
+
+      return isAlreadyWatched ? currentWatched : [...currentWatched, movie];
+    });
   }
+
+  useEffect(() => {
+    localStorage.setItem(WATCHED_STORAGE_KEY, JSON.stringify(watched));
+  }, [watched]);
+
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.code === "Escape") setSelectedMovie(null);
