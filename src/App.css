@@ -1,18 +1,61 @@
-.app-shell {
-  min-height: 100vh;
+.currency-converter {
+  width: min(100%, 54rem);
+  margin: 12rem auto;
+  padding: 3.2rem;
   display: grid;
-  place-items: center;
-  padding: 2rem;
+  grid-template-columns: minmax(0, 1fr) 12rem 12rem;
+  gap: 1.4rem;
+  background: linear-gradient(135deg, #162442, #0d172c);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 2rem;
+  box-shadow: 0 2.4rem 6rem rgba(0, 0, 0, 0.35);
+}
+
+.currency-converter input,
+.currency-converter select {
+  min-width: 0;
+  height: 5rem;
+  padding: 0 1.4rem;
+  color: #edf4ff;
+  background: rgba(5, 13, 30, 0.72);
+  border: 1px solid #3c527b;
+  border-radius: 1rem;
+  font: inherit;
+  font-size: 1.6rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.currency-converter select {
+  cursor: pointer;
+}
+
+.currency-converter input:focus,
+.currency-converter select:focus {
+  background: rgba(5, 13, 30, 0.95);
+  border-color: #66a8ff;
+  box-shadow: 0 0 0 0.35rem rgba(102, 168, 255, 0.2);
+}
+
+.currency-converter p {
+  grid-column: 1 / -1;
+  margin: 0.4rem 0 0;
+  padding: 1.8rem;
+  color: #9ed0ff;
+  background: rgba(102, 168, 255, 0.11);
+  border: 1px solid rgba(102, 168, 255, 0.2);
+  border-radius: 1.2rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-align: center;
 }
 
-.app-shell h1 {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
-  color: #111827;
-}
-
-.app-shell p {
-  margin: 0;
-  color: #6b7280;
+@media (max-width: 560px) {
+  .currency-converter {
+    margin: 4rem auto;
+    padding: 2rem;
+    grid-template-columns: 1fr;
+  }
 }
