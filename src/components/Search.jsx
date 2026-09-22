@@ -3,8 +3,16 @@ import { useEffect,useRef } from "react";
 export default function Search({ query, setQuery }) {
   const inputEl= useRef(null);
   useEffect(()=>{
-   inputEl.current.focus();
+    function callback(e) {
+      if(e.code === "Enter"){
+       inputEl.current.focus(); 
+      }
+       
+    }
+       document.addEventListener("keydown", callback)
+   return () => document.removeEventListener("keydown", callback)
   },[])
+
   
   return (
     <input
