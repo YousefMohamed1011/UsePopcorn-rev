@@ -5,6 +5,7 @@ import WatchedMoviesList from "./WatchedMoviesList";
 import WatchedSummary from "./WatchedSummary";
 import MovieDetail from "./MovieDetail";
 import useLocalStorage from "../Hooks/useLocalStorage";
+import { useKey } from "../Hooks/useKey";
 
 const WATCHED_STORAGE_KEY = "watched";
 
@@ -20,16 +21,8 @@ export default function  Main({ movies , selectedMovie, setSelectedMovie }) {
       return isAlreadyWatched ? currentWatched : [...currentWatched, movie];
     });
   }
+ 
 
-  useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.code === "Escape") setSelectedMovie(null);
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [setSelectedMovie]);
   return (
     <main className="main">
       <Box element={<MovieList movies={movies} setSelectedMovie={setSelectedMovie} handleAddWatchedMovie={handleAddWatchedMovie} />} />

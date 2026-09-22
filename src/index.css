@@ -263,6 +263,94 @@ body {
   background-color: var(--color-red-dark);
 }
 
+/* Geolocation example */
+#root > div:has(> button) {
+  width: min(100%, 52rem);
+  margin: 12vh auto;
+  padding: 4rem;
+  text-align: center;
+  background: linear-gradient(145deg, rgba(25, 44, 75, 0.96), rgba(10, 22, 42, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 2.4rem;
+  box-shadow: 0 2.4rem 6rem rgba(0, 0, 0, 0.32);
+}
+
+#root > div:has(> button)::before {
+  content: "⌖";
+  display: grid;
+  place-items: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin: 0 auto 2rem;
+  color: #082032;
+  background: linear-gradient(135deg, #67e8f9, #38bdf8);
+  border-radius: 50%;
+  font-size: 3.4rem;
+  font-weight: 700;
+  box-shadow: 0 1rem 2.4rem rgba(56, 189, 248, 0.25);
+}
+
+#root > div:has(> button) > button {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  color: #082032;
+  background: linear-gradient(135deg, #67e8f9, #38bdf8);
+  border: 0;
+  border-radius: 1.2rem;
+  box-shadow: 0 1rem 2.4rem rgba(56, 189, 248, 0.2);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+#root > div:has(> button) > button:hover:not(:disabled) {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 1.4rem 3rem rgba(56, 189, 248, 0.3);
+}
+
+#root > div:has(> button) > button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+#root > div:has(> button) > p {
+  margin-top: 1.6rem;
+  padding: 1.3rem 1.6rem;
+  color: #dbeafe;
+  background: rgba(15, 35, 62, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1.55;
+}
+
+#root > div:has(> button) > p:last-child {
+  color: #94a3b8;
+  background: transparent;
+  border: 0;
+  font-size: 1.35rem;
+}
+
+#root > div:has(> button) a {
+  color: #67e8f9;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#root > div:has(> button) a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  #root > div:has(> button) {
+    margin: 5rem auto;
+    padding: 2.4rem;
+  }
+}
+
 /* ******* */
 
 .summary {
