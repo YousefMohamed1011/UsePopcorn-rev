@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Box from "./Box";
 import MovieList from "./MovieList";
 import WatchedMoviesList from "./WatchedMoviesList";
 import WatchedSummary from "./WatchedSummary";
 import MovieDetail from "./MovieDetail";
+import useLocalStorage from "../Hooks/useLocalStorage";
 
 const WATCHED_STORAGE_KEY = "watched";
 
-function getStoredWatchedMovies() {
-  try {
-    const storedWatchedMovies = localStorage.getItem(WATCHED_STORAGE_KEY);
-    const watchedMovies = storedWatchedMovies ? JSON.parse(storedWatchedMovies) : [];
-
-    return Array.isArray(watchedMovies) ? watchedMovies : [];
-  } catch {
-    return [];
-  }
-}
-
 export default function  Main({ movies , selectedMovie, setSelectedMovie }) {
-  const [watched, setWatched] = useState(getStoredWatchedMovies);
+  const [watched, setWatched] = useLocalStorage(WATCHED_STORAGE_KEY, []);
 
   function handleAddWatchedMovie(movie) {
     setWatched((currentWatched) => {
@@ -30,10 +20,6 @@ export default function  Main({ movies , selectedMovie, setSelectedMovie }) {
       return isAlreadyWatched ? currentWatched : [...currentWatched, movie];
     });
   }
-
-  useEffect(() => {
-    localStorage.setItem(WATCHED_STORAGE_KEY, JSON.stringify(watched));
-  }, [watched]);
 
   useEffect(() => {
     function handleKeyDown(event) {
