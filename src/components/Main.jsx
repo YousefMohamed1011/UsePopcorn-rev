@@ -18,7 +18,7 @@ function getStoredWatchedMovies() {
   }
 }
 
-export default function Main({ movies , selectedMovie, setSelectedMovie }) {
+export default function  Main({ movies , selectedMovie, setSelectedMovie }) {
   const [watched, setWatched] = useState(getStoredWatchedMovies);
 
   function handleAddWatchedMovie(movie) {
